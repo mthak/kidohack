@@ -9,13 +9,31 @@ def create_connection():
     table = dynamodb.Table('gameusers')
 
 @app.route('/getkid', methods=['GET'])
-def get_child_data(rollnumber):
-    data = table.get_item(
-       Key={
-            'rollnumber': rollnumber,
-            })
-    print(data['Item'])
-    return data['Item']
+def get_child_data():
+    data = request.get_json()
+    if rollnumber in data['rollnummber']:
+       try:
+          data = table.get_item(
+            Key={
+                'rollnumber': rollnumber,
+               })
+       except KeyError:
+          return("Invalid Key Found")
+       print(data['Item'])
+       if data['Item'] is None:
+          data = {"empty": True}
+          return data
+       return data['Item']
+    else:
+      deviceid = data['deviceid']
+      try:
+         data = table.get_item(key='deviceid' = deviceid})
+         print data
+         return data['Item']
+         if data['Item'] is None:
+            data = {"empty": True}
+            return data
+
 
 @app.route('/addkid', methods=['POST'])
 def add_child_data():
