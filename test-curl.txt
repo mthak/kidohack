@@ -1,0 +1,4 @@
+curl --header "Content-Type: application/json" -X POST http://localhost:7080/updatescore -d @score.json
+curl --header "Content-Type: application/json" -X POST http://localhost:7080/addkid -d @add.json
+curl --header "Content-Type: application/json" -X POST http://localhost:7080/getkid -d @name.json
+curl --header "Content-Type: application/json" -X POST http://localhost:7080/getquestion -d @grade.json
