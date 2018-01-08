@@ -1,6 +1,6 @@
 {
-    "grade1": {
-        "questions": [
+    "gradefirst": 
+        [
             {
                 "answer": 6,
                 "help": "Here are your 4 choices 2,5,6,8",
@@ -13,10 +13,10 @@
                 "points": 5,
                 "ques": "What's 32-18"
             }
-        ]
-    },
-    "grade2": {
-        "questions": [
+        ],
+    
+    "gradesecond":
+        [
             {
                 "answer": 433,
                 "help": "Here are your 4 choices 433 344 423 413",
@@ -29,10 +29,9 @@
                 "points": 5,
                 "ques": "What's 132-180"
             }
-        ]
-    },
-    "grade3": {
-        "questions": [
+        ],
+    "gradethird":
+        [
             {
                 "answer": 96,
                 "help": "Here are your 4 choices 46,86,76,96",
@@ -46,5 +45,4 @@
                 "ques": "What's 14 multiply by 12"
             }
         ]
-    }
 }
