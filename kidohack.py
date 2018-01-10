@@ -112,6 +112,19 @@ def update_score():
                       ReturnValues="UPDATED_NEW")
     return "Record updated successfully"
 
+@app.route('/getscore', methods=['POST'])
+def get_score():
+    table = create_connection()
+    data = request.get_json()
+    rollnumber = data['rollnumber']
+    dbdata = table.get_item(Key={'rollnumber': rollnumber})
+    print("Retrieved data for kid as ", dbdata['Item'])
+    if 'points' in json.dumps(dbdata['Item']):
+        points = dbdata['Item']['points']
+    else:
+         points = 0
+    return ("your score is " + str(points))
+
 if __name__ == "__main__":
     LOG_FORMAT = '[%(asctime)s] %(process)d %(module)-12s %(levelname)-8s %(message)s'
     DATE_FORMAT = '%d/%b/%Y %H:%M:%S %z'

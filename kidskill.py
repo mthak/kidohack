@@ -44,32 +44,32 @@ def get_kidsdata():
           return("Looks like you are a new user to our MathGoodies Family, Welcome ")
        else:
            if len(kidsdata) > 1:
-           kidsuser = []
+              kidsuser = []
            for data in kidsdata:
                print data['name']
                kidsuser.append(data['name'])
-           return("Welcome I found " + len(kidsdata)+ " users with this device" reprompt =" Please tell us your personalized key")
+           return("Welcome I found " + len(kidsdata)+ "Please tell us your personalized key")
            rollnumber = ask_request.intent.slots.child_id.value
-           userdata = {'rollnumber' = rollnumber}
+           userdata = {'rollnumber': rollnumber}
            response = request.post("http://localhost:5000/getkid", data= userdata)
            if response.get_status == 200:
               kidsuser = reponse.json()['name']
-              return("Welcome" + kidsuser + "Ready for some fun and more goodies" repro>  \mpt = " Tell me which grade you are in ")
+              return("Welcome" + kidsuser + "Ready for some fun and more goodies")
            else:
                 kidsuser = kidsdata['name']
-                return("Welcome" + kidsuser + "Ready for some fun and more goodies" reprompt = " Tell me which grade you are in ")
+                return("Welcome" + kidsuser + "Ready for some fun and more goodies Tell me which grade you are in ")
                 gradeinfo = ask_request.intent.slots.gradeInfo.value
 
 def ask_question(gradeinfo,index):
     userdata = {}
     userdata['gradeinfo'] = gradeinfo
     userdata[index] = index
-    response = request.get("http://localhost:5000/getquestion, data = userdata)
+    response = request.get("http://localhost:5000/getquestion", data = userdata)
     if response.get_status == 200:
        quesdata = response.get_json()
-       return("Here is your Question" + quesdata['ques']
+       return("Here is your Question" + quesdata['ques'])
        answer = ask_request.intent.slots.answer.value
-       if quesdata['answer'] = answer:
+       if quesdata['answer'] == answer:
           points = quesdata['points']
           data = {}
           data['points'] = points
