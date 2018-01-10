@@ -60,11 +60,11 @@ def get_kidsdata():
                 return("Welcome" + kidsuser + "Ready for some fun and more goodies" reprompt = " Tell me which grade you are in ")
                 gradeinfo = ask_request.intent.slots.gradeInfo.value
 
-def ask_question(gradeinfo):
+def ask_question(gradeinfo,index):
     userdata = {}
     userdata['gradeinfo'] = gradeinfo
     userdata[index] = index
-    response = request.get("http://localhost:5000/getkid", data = userdata)
+    response = request.get("http://localhost:5000/getquestion, data = userdata)
     if response.get_status == 200:
        quesdata = response.get_json()
        return("Here is your Question" + quesdata['ques']

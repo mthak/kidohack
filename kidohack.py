@@ -23,13 +23,10 @@ def get_child_data():
     print("data i got is ", kiddata)
     #logging.debug("Received data %" %(kiddata))
     if 'rollnumber' in kiddata:
-        try:
-            data = table.get_item(
+        data = table.get_item(
                 Key={
                     'rollnumber': kiddata['rollnumber'],
                 })
-        except KeyError:
-            return("Invalid Key Found")
         print(data['Item'])
         if data['Item'] is None:
             data = {}
